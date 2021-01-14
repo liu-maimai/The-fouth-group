@@ -1,5 +1,8 @@
 import axios from "axios";
 import Vue from "vue";
+import {
+    Dialog
+} from 'vant';
 import loading from "../../components/index";
 Vue.use(loading);
 const server = axios.create({
@@ -24,11 +27,13 @@ server.interceptors.request.use(
 server.interceptors.response.use(
     (res) => {
         if (res.data == "无效token") {
-            alert("token无效，请重新登录");
-            Vue.$loading.hide();
+            Dialog.alert({
+                message: 'token无效，请重新登录',
+            }).then(() => {
+                Vue.$loading.hide();
+            });
         } else {
             Vue.$loading.hide();
-
             return res;
         }
     },
