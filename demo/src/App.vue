@@ -1,32 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <router-view />
+        <van-tabbar v-model="active" router>
+            <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
+            <van-tabbar-item icon="comment-o" to="/course">课程</van-tabbar-item>
+            <van-tabbar-item icon="qr-invalid" to="/order">约课记录</van-tabbar-item>
+            <van-tabbar-item icon="orders-o" to="/exercise">练习</van-tabbar-item>
+            <van-tabbar-item icon="friends-o" to="/person">我的</van-tabbar-item>
+        </van-tabbar>
     </div>
-    <router-view/>
-  </div>
 </template>
-
+<script>
+export default {
+    data() {
+        return {
+            active: 0,
+        };
+    },
+};
+</script>
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
 }
 </style>
