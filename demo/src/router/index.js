@@ -9,42 +9,52 @@ Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
-    name: 'Home',
-    component: () => import('../views/home/home.vue'),
-    children: [
-      ...homeRouter
+    name: 'index',
+    component: () => import('../views/index.vue'),
+    children: [{
+        path: '/home',
+        name: 'home',
+        component: () => import('../views/home/home.vue'),
+        children: [
+          ...homeRouter
+        ]
+      },
+      {
+        path: '/course',
+        name: 'course',
+        component: () => import('../views/class/class.vue'),
+        // children: [
+        //   ...classRouter
+        // ]
+      }, {
+        path: '/order',
+        name: 'order',
+        component: () => import('../views/order/order.vue'),
+        // children: [
+        //   ...orderRouter
+        // ]
+      }, {
+        path: '/exercise',
+        name: 'exercise',
+        component: () => import('../views/exercise/exercise.vue'),
+        // children: [
+        //   ...exerciseRouter
+        // ]
+      }, {
+        path: '/person',
+        name: 'person',
+        component: () => import('../views/person/person.vue'),
+        // children: [
+        //   ...personRouter
+        // ]
+      },
     ]
   },
   {
-    path: '/course',
-    name: 'course',
-    component: () => import('../views/class/class.vue'),
-    // children: [
-    //   ...classRouter
-    // ]
-  }, {
-    path: '/order',
-    name: 'order',
-    component: () => import('../views/order/order.vue'),
-    // children: [
-    //   ...orderRouter
-    // ]
-  }, {
-    path: '/exercise',
-    name: 'exercise',
-    component: () => import('../views/exercise/exercise.vue'),
-    // children: [
-    //   ...exerciseRouter
-    // ]
-  }, {
-    path: '/person',
-    name: 'person',
-    component: () => import('../views/person/person.vue'),
-    // children: [
-    //   ...personRouter
-    // ]
-  },
-
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login.vue')
+  }
 ]
 
 const router = new VueRouter({

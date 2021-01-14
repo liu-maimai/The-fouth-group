@@ -8,6 +8,8 @@ import './assets/js/rem'
 import vant from "vant"
 import 'vant/lib/index.css';
 Vue.use(vant)
+import { Loading } from 'vant';
+Vue.use(Loading);
 //axios引入并调用,调用方式为挂载在原型上，这样所以vue项目都可以使用axios
 import axios from "axios"
 Vue.prototype.$axios=axios
