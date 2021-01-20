@@ -1,0 +1,133 @@
+<template>
+  <div>
+    <div class="new">
+      <span class="dis"></span>
+      <p class="display" @click="mingxi">
+        <span>{{ list[2].channel_info.name }}</span>
+        <span>更多<van-icon name="arrow"/></span>
+      </p>
+    </div>
+    <div class="container">
+      <div
+        class="for"
+        @click="recommend(item.teacher_id)"
+        v-for="(item, index) in list[2].list"
+        :key="index"
+      >
+        <img :src="item.teacher_avatar" />
+        <div class="spac">
+          <p class="p1">
+            <span class="sp1">{{ item.teacher_name }}</span>
+          </p>
+          <p class="p2">{{ item.introduction }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ["list"],
+  data() {
+    return {};
+  },
+  mounted() {
+    // console.log(this.list);
+  },
+  methods: {
+    recommend(id) {
+      this.$router.push({ path: "/Characteristic", query: { id } });
+    },
+    //跳转到讲师列表
+    mingxi() {
+      this.$router.push({ path: "/mingxingdetail" });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.new {
+  height: 5vw;
+  line-height: 5vw;
+  display: flex;
+  padding-left: 4.2vw;
+  .display {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .dis {
+    display: inline-block;
+    height: 90%;
+    width: 0.8vw;
+    background-color: #eb6100;
+    margin-right: 2vw;
+  }
+  p {
+    color: #595959;
+    margin: 0;
+    font-size: 4.26667vw;
+  }
+}
+.container {
+  padding: 1.33333vw 2.66667vw 5.33333vw;
+  .for {
+    display: flex;
+    align-items: center;
+    padding: 0 4vw;
+    background: #fff;
+    border-radius: 1.06667vw;
+    height: 2.16rem;
+    height: 21.6vw;
+    margin-top: 2.66667vw;
+    img {
+      display: flex;
+      width: 10.66667vw;
+      height: 10.66667vw;
+      margin-right: 3.2vw;
+      border-radius: 50%;
+      flex: none;
+    }
+    .spac {
+      padding-bottom: 0.8vw;
+      .p1 {
+        margin: 0;
+        display: flex;
+        width: 0.7rem;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.8vw;
+        .sp1 {
+          font-size: 4vw;
+          color: #595959;
+          line-height: 5.6vw;
+          padding-right: 1.33333vw;
+        }
+        .mm {
+          font-size: 2.93333vw;
+          color: #ea7a2f;
+        }
+      }
+      .p2 {
+        margin: 0;
+        width: 73.33333vw;
+        font-size: 3.2vw;
+        height: 4vw;
+        padding-top: 1.33333vw;
+        color: #b7b7b7;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+</style>
